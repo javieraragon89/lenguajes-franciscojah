@@ -16,7 +16,7 @@ public class LenguajesFjah {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Mi primer proyecto");
+        System.out.println("Mi primer proyecto con esta cosa tan bonita");
     }
     
 }
