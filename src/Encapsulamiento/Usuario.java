@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package encapsulamiento;
+package Encapsulamiento;
 
 /**
  *
@@ -13,5 +13,18 @@ public class Usuario {
     //primer regla de encapsulamiento
     private  String nombre;
     private int edad;
-    
+ 
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+        
+    }
+    public void setEdad(String edad){
+        this.edad=edad;
+    }
+    public String getNombre(){
+        return nombre;
+    }
+    public int  getEdad(){
+        return edad;
+    }
 }
