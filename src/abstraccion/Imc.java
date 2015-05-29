@@ -11,13 +11,45 @@ package abstraccion;
  */
 public class Imc {
     
-    float peso;
-    float altura;
+   private float peso;//encapsulamiento
+   private float altura; //encapsulamiento
+   private boolean flaco;
+   public void setFlaco(boolean flaco){
+       this.flaco=flaco;
+   }
+   
+   public boolean isFlaco(){
+       return flaco;
+   }
+   
+   public void setpeso(float peso){
+       this.peso=peso;
+          }
+   public void setaltura(float altura){
+       this.altura=altura;
+          }
+ 
+ public float getpeso(){
+       return peso;
+          }
+ 
+ public float getaltura(){
+       return altura;
+          }
+ 
+   
+   public Imc(){
+    }
     
+    
+   
     public Imc(float p, float a){
     peso=p;
     altura=a;
     }
+    
+    
+    
     
     public String calcular(){
         float imc=peso/(altura*altura);
