@@ -5,11 +5,18 @@
  */
 package Collection;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.list;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author T-107
  */
 public class InterfaceUsuario extends javax.swing.JFrame {
+    private Object u;
 
     /**
      * Creates new form InterfaceUsuario
@@ -40,6 +47,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         botonCargarUsuario = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
+        OrdenarPorNombre = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,9 +87,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonGuardar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3)
-                        .addComponent(textoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel3)
+                    .addComponent(textoEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -111,6 +118,11 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 0, 0));
 
         botonCargarUsuario.setText("Cargar Usuarios");
+        botonCargarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCargarUsuarioActionPerformed(evt);
+            }
+        });
 
         tablaUsuarios.setBackground(new java.awt.Color(0, 102, 102));
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -126,6 +138,13 @@ public class InterfaceUsuario extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaUsuarios);
 
+        OrdenarPorNombre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        OrdenarPorNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrdenarPorNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -133,6 +152,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botonCargarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(OrdenarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,7 +164,9 @@ public class InterfaceUsuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(botonCargarUsuario)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCargarUsuario)
+                    .addComponent(OrdenarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -166,8 +189,42 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
-        // TODO add your handling code here:
+            // TODO add your handling code here:
+        
+        
+        
+        
+        
     }//GEN-LAST:event_textoNombreActionPerformed
+
+    private void OrdenarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdenarPorNombreActionPerformed
+        // TODO add your handling code here:
+    botonCargarUsuario.setEnabled(true);
+    int indice=OrdenarPorNombre.getSelectedIndex();
+    }//GEN-LAST:event_OrdenarPorNombreActionPerformed
+
+    @SuppressWarnings("empty-statement")
+    private void botonCargarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarUsuarioActionPerformed
+        // TODO add your handling code here:
+        
+    GeneradorDeUsuarios gen=new GeneradorDeUsuarios();
+    List<Usuario> usuarios= gen.getUsuarios();
+    Collections.sort(usuarios, new UsuarioPorEdad());
+        tablaUsuarios.
+                setModel(new
+        DefaultTableModel(
+                new String[]{"Nombre","edad","email"}, gen.getUsuarios().size()));
+    
+        int fila=0;
+        for(Usuario u:usuarios){
+        tablaUsuarios.setValueAt(u.getNombre(), fila, 0);
+        tablaUsuarios.setValueAt(u.getedad(), fila, 1);
+        tablaUsuarios.setValueAt(u.getemail(), fila, 2);
+       fila++;        
+    }
+    }
+                
+    }//GEN-LAST:event_botonCargarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +262,7 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox OrdenarPorNombre;
     private javax.swing.JButton botonCargarUsuario;
     private javax.swing.JButton botonGuardar;
     private javax.swing.JLabel jLabel1;
@@ -219,4 +277,8 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField textoEmail;
     private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void UsuarioPorEdad() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

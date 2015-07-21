@@ -11,7 +11,7 @@ package Collection;
  */
 public class Usuario {
     private String nombre; 
-     private int edad; 
+     private Integer edad; 
      private String email; 
      
     public Usuario(String nombre, int edad, String email) { 
@@ -41,14 +41,22 @@ public class Usuario {
      } 
  
  
-     public int getEdad() { 
+     public Integer getEdad() { 
          return edad; 
      } 
  
  
-     public void setEdad(int edad) { 
+     public void setEdad(Integer edad) { 
          this.edad = edad; 
      } 
+
+    String getedad() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    String getemail() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
       
 
 }
