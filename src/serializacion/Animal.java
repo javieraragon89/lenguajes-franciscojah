@@ -12,7 +12,7 @@ package serializacion;
 public class Animal {
     
    private String Nombre;
-   private String Carnivoro;
+   private boolean  Carnivoro;
 
     public String getNombre() {
         return Nombre;
@@ -22,11 +22,11 @@ public class Animal {
         this.Nombre = Nombre;
     }
 
-    public String getCarnivoro() {
+    public boolean  getCarnivoro() {
         return Carnivoro;
     }
 
-    public void setCarnivoro(String Carnivoro) {
+    public void setCarnivoro(boolean Carnivoro) {
         this.Carnivoro = Carnivoro;
     }
    

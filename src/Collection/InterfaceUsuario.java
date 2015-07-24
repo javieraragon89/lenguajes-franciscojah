@@ -1,28 +1,31 @@
+/*                    
+ 
+
+ 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Collection;
+ * and open the template in the Collection
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.list;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author T-107
  */
-public class InterfaceUsuario extends javax.swing.JFrame {
-    private Object u;
+
+package collections;
+
+import java.util.Collections;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+public class InterfazUsuario extends javax.swing.JFrame {
 
     /**
-     * Creates new form InterfaceUsuario
+     * Creates new form InterfazUsuario
      */
-    public InterfaceUsuario() {
+    public InterfazUsuario() {
         initComponents();
+        botonCargarUsuario.setEnabled(false);
     }
 
     /**
@@ -189,42 +192,37 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void textoNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoNombreActionPerformed
-            // TODO add your handling code here:
-        
-        
-        
-        
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_textoNombreActionPerformed
 
-    private void OrdenarPorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdenarPorNombreActionPerformed
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
         // TODO add your handling code here:
-    botonCargarUsuario.setEnabled(true);
-    int indice=OrdenarPorNombre.getSelectedIndex();
-    }//GEN-LAST:event_OrdenarPorNombreActionPerformed
+    }//GEN-LAST:event_botonGuardarActionPerformed
 
-    @SuppressWarnings("empty-statement")
     private void botonCargarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarUsuarioActionPerformed
         // TODO add your handling code here:
-        
-    GeneradorDeUsuarios gen=new GeneradorDeUsuarios();
-    List<Usuario> usuarios= gen.getUsuarios();
-    Collections.sort(usuarios, new UsuarioPorEdad());
+        GeneradorDeUsuarios gen=new GeneradorDeUsuarios();
+     List<Usuario> usuarios=   gen.getUsuarios();
+     Collections.sort(usuarios, new UsuarioPorEdad());
         tablaUsuarios.
-                setModel(new
+                setModel(new 
         DefaultTableModel(
-                new String[]{"Nombre","edad","email"}, gen.getUsuarios().size()));
-    
+      new String[]{"Nombre","edad","email"}, gen.getUsuarios().size()));
+        
         int fila=0;
         for(Usuario u:usuarios){
-        tablaUsuarios.setValueAt(u.getNombre(), fila, 0);
-        tablaUsuarios.setValueAt(u.getedad(), fila, 1);
-        tablaUsuarios.setValueAt(u.getemail(), fila, 2);
-       fila++;        
-    }
-    }
-                
+            tablaUsuarios.setValueAt(u.getNombre(), fila, 0);
+            tablaUsuarios.setValueAt(u.getEdad(), fila, 1);
+            tablaUsuarios.setValueAt(u.getEmail(), fila, 2);
+            fila++;}
+        
     }//GEN-LAST:event_botonCargarUsuarioActionPerformed
+
+    private void comboSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSeleccionActionPerformed
+        // TODO add your handling code here:
+        botonCargarUsuario.setEnabled(true);
+        int indice= comboSeleccion.getSelectedIndex();
+    }//GEN-LAST:event_comboSeleccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,20 +241,20 @@ public class InterfaceUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceUsuario().setVisible(true);
+                new InterfazUsuario().setVisible(true);
             }
         });
     }
@@ -277,8 +275,4 @@ public class InterfaceUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField textoEmail;
     private javax.swing.JTextField textoNombre;
     // End of variables declaration//GEN-END:variables
-
-    private void UsuarioPorEdad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
